@@ -30,7 +30,7 @@
 #'@export
 
 generate_bintolen_gi_list <- function(bintolen_path, chrs = NULL, Dthreshold = 2e+06, binned = TRUE, binsize = NULL, gen = "Hsapiens", 
-    gen_ver = "hg19") {
+    gen_ver = "CHM13v2.0") {
     input.file.read <- function(filepath) {
         # reads files of RDS, .txt, or .txt.gz filepath: valid path ending in .txt, .txt.gz, or .rds
         if (grepl("\\.txt.gz$", filepath) | grepl("\\.txt$", filepath)) {

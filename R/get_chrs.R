@@ -8,10 +8,11 @@
 #'@return string vector of chromosomes.
 #'@examples get_chrs('Hsapiens','hg19')
 #'@export
-get_chrs <- function(gen = "Hsapiens", gen_ver = "hg19") {
-    genome <- paste("BSgenome.", gen, ".UCSC.", gen_ver, sep = "")
-    library(genome, character.only = TRUE)
-    chrs <- GenomeInfoDb::seqnames(get(gen))[vapply(GenomeInfoDb::seqnames(get(gen)), nchar, FUN.VALUE = 1) <= 5]
-    chrs <- chrs[!chrs %in% c("chrMT","chrY","chrM")]
-    return(chrs)
+get_chrs <- function(gen = "Hsapiens", gen_ver = "CHM13v2.0") {
+  genome <- paste("BSgenome.", gen, ".NCBI.T2T.", gen_ver, sep = "")
+  # genome <- "BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0"
+  library(genome, character.only = TRUE)
+  chrs <- GenomeInfoDb::seqnames(get(gen))[vapply(GenomeInfoDb::seqnames(get(gen)), nchar, FUN.VALUE = 1) <= 5]
+  chrs <- chrs[!chrs %in% c("MT","Y","M")]
+  return(chrs)
 }

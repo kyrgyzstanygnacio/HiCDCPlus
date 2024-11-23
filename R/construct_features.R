@@ -36,7 +36,7 @@
 #'wg_file=NULL,chrs=c('chr21'))
 #'@export
 
-construct_features <- function(output_path, gen = "Hsapiens", gen_ver = "hg19",
+construct_features <- function(output_path, gen = "Hsapiens", gen_ver = "CHM13v2.0",
                       sig = "GATC", bin_type = "Bins-uniform", binsize = 5000, 
                       wg_file = NULL, chrs = NULL, feature_type = "RE-based") {
     

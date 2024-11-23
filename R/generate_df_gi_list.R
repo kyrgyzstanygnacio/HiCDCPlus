@@ -23,7 +23,7 @@
 #'@export
 
 generate_df_gi_list <- function(df, chrs = NULL, Dthreshold = 2e+06,
-                                gen = "Hsapiens", gen_ver = "hg19") {
+                                gen = "Hsapiens", gen_ver = "CHM13v2.0") {
     gi_list <- list()
     if (!("chr" %in% colnames(df) & "start" %in% colnames(df))) {
         stop("the df should have columns named 'chr' and 'start'")

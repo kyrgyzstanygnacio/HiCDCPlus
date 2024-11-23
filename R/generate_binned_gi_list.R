@@ -16,7 +16,7 @@
 #'@examples gi_list<-generate_binned_gi_list(1e6,chrs='chr22')
 #'@export
 
-generate_binned_gi_list <- function(binsize, chrs = NULL, Dthreshold = 2e+06, gen = "Hsapiens", gen_ver = "hg19") {
+generate_binned_gi_list <- function(binsize, chrs = NULL, Dthreshold = 2e+06, gen = "Hsapiens", gen_ver = "CHM13v2.0") {
     # generates binned GenomicInteraction object separated by chromosomes defined in chrs. binsize: binsize in BP chrs:
     # chromosomes for this object to be generated Dthreshold: maximum pairwise genomic distance (default 2Mb)
     gi_list <- list()

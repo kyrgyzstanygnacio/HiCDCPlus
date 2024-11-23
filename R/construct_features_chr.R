@@ -31,17 +31,18 @@
 #'binsize=100000,wg_file=NULL)
 #'@export
 
-construct_features_chr <- function(chrom, gen = "Hsapiens", gen_ver = "hg19",
+construct_features_chr <- function(chrom, gen = "Hsapiens", gen_ver = "CHM13v2.0",
                                sig = "GATC", bin_type = "Bins-uniform", binsize = 5000, 
                                wg_file = NULL, feature_type = "RE-based") {
     
-    getGC <- function(regions) {
-        genome <- paste("BSgenome.", gen, ".UCSC.", gen_ver, sep = "")
-        library(genome, character.only = TRUE)
-        gc <- rowSums(Biostrings::alphabetFrequency(BSgenome::Views(BiocGenerics::get(genome), regions), as.prob = TRUE)[, 
-                                                                                                                         seq(2,3,1)])
-        return(gc)
-    }
+  getGC <- function(regions) {
+    genome <- paste("BSgenome.", gen, ".NCBI.T2T.", gen_ver, sep = "")
+    # genome <- paste("BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0")
+    library(genome, character.only = TRUE)
+    gc <- rowSums(Biostrings::alphabetFrequency(BSgenome::Views(BiocGenerics::get(genome), regions), as.prob = TRUE)[, 
+                                                                                                                     seq(2,3,1)])
+    return(gc)
+  }
     
     getMap <- function(regions, data) {
         hits <- GenomicRanges::findOverlaps(data, regions, type = "within")

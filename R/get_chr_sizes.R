@@ -12,13 +12,14 @@
 #'sizes.
 #'@examples get_chr_sizes('Hsapiens','hg19',c('chr21','chr22'))
 #'@export
-get_chr_sizes <- function(gen = "Hsapiens", gen_ver = "hg19", chrs = NULL) {
-    genome <- paste("BSgenome.", gen, ".UCSC.", gen_ver, sep = "")
-    library(genome, character.only = TRUE)
-    if (is.null(chrs)) {
-        # get list of chromosomes
-        chrs <- get_chrs(gen, gen_ver)
-    }
-    sizes <- GenomeInfoDb::seqlengths(get(gen))[chrs]
-    return(sizes)
+get_chr_sizes <- function(gen = "Hsapiens", gen_ver = "CHM13v2.0", chrs = NULL) {
+  genome <- paste("BSgenome.", gen, ".NCBI.T2T.", gen_ver, sep = "")
+  # genome <- "BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0"
+  library(genome, character.only = TRUE)
+  if (is.null(chrs)) {
+    # get list of chromosomes
+    chrs <- get_chrs(gen, gen_ver)
+  }
+  sizes <- GenomeInfoDb::seqlengths(BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0)[chrs]
+  return(sizes)
 }

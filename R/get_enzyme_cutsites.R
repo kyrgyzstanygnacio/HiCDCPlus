@@ -15,13 +15,14 @@
 #'sig=c('GATC','GANTC'),chrs=c('chr22'))
 #'@export
 
-get_enzyme_cutsites <- function(sig, gen = "Hsapiens", gen_ver = "hg19", chrs = NULL) {
-    genome <- paste("BSgenome.", gen, ".UCSC.", gen_ver, sep = "")
+get_enzyme_cutsites <- function(sig, gen = "Hsapiens", gen_ver = "CHM13v2.0", chrs = NULL) {
+    genome <- paste("BSgenome.", gen, ".NCBI.T2T.", gen_ver, sep = "")
+    # genome <- "BSgenome.Hsapiens.NCBI.T2T.CHM13v2.0"
     library(genome, character.only = TRUE)
     if (is.null(chrs)) {
         # get list of chromosomes
         chrs <- get_chrs(gen, gen_ver)
-        chrs <- chrs[!chrs %in% c("chrY", "chrM")]
+        chrs <- chrs[!chrs %in% c("Y", "M")]
     }
     genome.chromSizes <- get_chr_sizes(gen, gen_ver, chrs)
     while (any(grepl("N", sig))) {
